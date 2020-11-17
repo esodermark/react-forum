@@ -2,6 +2,16 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import ApiClient from '../../api-client'
 
+import { 
+    RegisterContainer, 
+    RegisterFormWrapper, 
+    RegisterForm,
+    InputSubmit,
+    Input, 
+    Label, 
+    SubmitWrapper
+} from './RegisterElements'
+
 const RegisterForm = () => {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -25,8 +35,7 @@ const RegisterForm = () => {
             lastName,
             email,
             password,
-            organisationName,
-            organisationKind
+            country,
         }
 
         await ApiClient.CreateUser(user)
