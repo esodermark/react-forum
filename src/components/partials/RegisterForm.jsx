@@ -5,12 +5,12 @@ import ApiClient from '../../api-client'
 import { 
     RegisterContainer, 
     RegisterFormWrapper, 
-    RegisterForm,
+    RegisterFormForm,
     InputSubmit,
     Input, 
     Label, 
     SubmitWrapper
-} from './RegisterElements'
+} from './RegisterFormElements'
 
 const RegisterForm = () => {
     const [firstName, setFirstName] = useState('')
@@ -30,21 +30,21 @@ const RegisterForm = () => {
     }
 
     const registerUser = async () => {
-        const user = {
+        const newUser = {
             firstName,
             lastName,
             email,
             password,
-            country,
+            country
         }
 
-        await ApiClient.CreateUser(user)
+        await ApiClient.Register(newUser)
     }
 
     return (
         <RegisterContainer>
         <RegisterFormWrapper>
-            <RegisterForm onSubmit={handleSubmit}>
+            <RegisterFormForm onSubmit={handleSubmit}>
                 <Label>firstname</Label>
                 <Input
                     type="text" value={firstName}
@@ -78,7 +78,7 @@ const RegisterForm = () => {
                 <SubmitWrapper>
                     <InputSubmit type="submit" value="Register"></InputSubmit>
                 </SubmitWrapper>
-            </RegisterForm>
+            </RegisterFormForm>
         </RegisterFormWrapper>
     </RegisterContainer>
     )

@@ -6,18 +6,18 @@ export const UserContext = createContext()
 const UserContextProvider = ({ children }) => {
     const [user, setUser] = useState({})
 
-    const loadUser = async () => {
-        const userInfo = await ApiClient.GetUser()
+    const setUserContext = async () => {
+        const userInfo = await ApiClient.GetUserInfo()
         setUser(userInfo)
     }
 
     useEffect(() => {
         const token = localStorage.getItem('token')
-        if(token) { loadUser() }
+        if(token) { setUserContext() }
     }, [])
 
     return (
-        <UserContext.Provider value={{user, setUser, loadUser}}>
+        <UserContext.Provider value={{user, setUserContext}}>
             { children }
         </UserContext.Provider>
     )
