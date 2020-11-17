@@ -4,6 +4,7 @@ import ApiClient from '../../api-client'
 import { 
     LoginContainer, 
     LoginForm,
+    ErrorMessage,
     InputSubmit, 
     Input, 
     Label, 
@@ -14,6 +15,7 @@ import {
 const LoginForm = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [errorMessage, setErrorMessage] = useState(null)
 
     const { getPostList } = useContext(PostContext)
     const { setUserContext } = useContext(UserContext)
@@ -33,8 +35,11 @@ const LoginForm = () => {
         const success = await ApiClient.Login(user)
         if (success) { 
             setUserContext()
+            setErrorMessage(null)
             redirect('/posts') 
             getPostList()
+        } else {
+            setErrorMessage('Unable to login with provided credentials')
         }
     }
 
@@ -52,6 +57,13 @@ const LoginForm = () => {
                     type="password" name="password" value={password} required
                     onChange={(e) => setPassword(e.target.value)}>
                 </Input>
+
+                {errorMessage && (
+                    <ErrorMessage>
+                        {errorMessage}
+                    </ErrorMessage>
+                )}
+
                 <SubmitWrapper>
                     <InputSubmit type="submit" value="Login"></InputSubmit>
                 </SubmitWrapper>
