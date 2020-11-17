@@ -46,14 +46,14 @@ axiosInstance.CreatePost = async(newPost) => {
     return true
 }
 
-axiosInstance.CreateReplyToPost = async(reply) => {
-    await axiosInstance.post('/forum/posts/', reply)
+axiosInstance.CreateReplyToPostById = async(reply, id) => {
+    await axiosInstance.post(`/forum/posts/${id}/replies`, reply)
     return true
 }
 
-axiosInstance.GetPostsList = async() => {
-    const postsList = await axiosInstance.get('/forum/posts/')
-    return postsList
+axiosInstance.GetPostList = async() => {
+    const postList = await axiosInstance.get('/forum/posts/')
+    return postList
 }
 
 axiosInstance.GetPostDetailsById = async(id) => {
