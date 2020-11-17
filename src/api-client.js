@@ -29,7 +29,8 @@ axiosInstance.Register = async(newUser) => {
 }
 
 axiosInstance.Login = async(user) => {
-    await axiosInstance.post('/auth/api-token-auth/', user)
+    const data = await axiosInstance.post('/auth/api-token-auth/', user)
+    localStorage.setItem('token', data.token)
     return true
 }
 
