@@ -13,4 +13,6 @@ const Home = () => {
     )
 }
 
+// TODO: show logged in user
+
 export default Home

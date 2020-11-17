@@ -21,11 +21,10 @@ const RegisterForm = () => {
 
     const history = useHistory()
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         await registerUser()
-
         history.push('/login')
     }
 
@@ -38,7 +37,21 @@ const RegisterForm = () => {
             country
         }
 
+        await authAdmin()
         await ApiClient.Register(newUser)
+        removeAdminToken()
+    }
+
+    const authAdmin = async () => {
+        const adminUser = {
+            email: 'pelle@willandskill.se',
+            password: 'pellesvanslos'
+        }
+        await ApiClient.Login(adminUser)
+    }
+
+    const removeAdminToken = () => {
+        localStorage.removeItem('token')
     }
 
     return (
