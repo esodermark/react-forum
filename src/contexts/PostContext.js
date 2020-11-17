@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react'
-import ApiClient from '../data/api-client'
+import ApiClient from '../api-client'
 
 export const PostContext = createContext()
 
@@ -23,7 +23,7 @@ const PostContextProvider = ({ children }) => {
         const index = posts.findIndex(post => post.id == id)
         const updatedPosts = posts
         updatedPosts[index].reply = reply
-        
+
         setPosts(updatedPosts)
     }
 

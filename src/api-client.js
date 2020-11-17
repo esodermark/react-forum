@@ -65,3 +65,7 @@ axiosInstance.GetPostReplyListById = async(id) => {
     const replyList = await axiosInstance.get(`/forum/posts/${id}/`)
     return replyList
 }
+
+
+
+export default axiosInstance
