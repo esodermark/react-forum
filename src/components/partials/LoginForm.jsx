@@ -1,17 +1,21 @@
 import React, { useState, useContext } from 'react'
+import { useHistory } from 'react-router-dom'
 import ApiClient from '../../api-client'
 import { PostContext } from '../../contexts/PostContext'
 import { UserContext } from '../../contexts/UserContext'
 
 import { 
     LoginContainer, 
-    LoginForm,
+    LoginFormForm,
     ErrorMessage,
-    InputSubmit, 
-    Input, 
-    Label, 
-    SubmitWrapper
- } from './LoginFormElements'
+ } from './elements/LoginFormElements'
+
+ import { 
+     InputSubmit, 
+     Input, 
+     Label, 
+     SubmitWrapper
+} from '../baseElements/Input'
 
 
 const LoginForm = () => {
@@ -21,6 +25,8 @@ const LoginForm = () => {
 
     const { getPostList } = useContext(PostContext)
     const { setUserContext } = useContext(UserContext)
+
+    const history = useHistory()
 
 
     const handleSubmit = (e) => {
@@ -38,7 +44,7 @@ const LoginForm = () => {
         if (success) { 
             setUserContext()
             setErrorMessage(null)
-            redirect('/posts') 
+            history.push('/posts')
             getPostList()
         } else {
             setErrorMessage('Unable to login with provided credentials')

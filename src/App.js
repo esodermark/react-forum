@@ -8,6 +8,7 @@ import PostCreate from './pages/PostCreate'
 import PostList from './pages/PostList'
 import PostDetail from './pages/PostDetail'
 import Home from './pages/Home'
+import Navbar from './components/partials/Navbar'
 
 
 function App() {
@@ -15,12 +16,13 @@ function App() {
     <>
       <UserContextProvider>
       <PostContextProvider>
+        <Navbar />
         <Switch>
           <Route path='/register' component={Register} />
           <Route path='/login' component={Login} />
           <Route path='/posts/create' component={PostCreate} />
-          <Route path='/posts' component={PostList} />
-          <Route path='/post/:id' component={PostDetail} />
+          {/* <Route path='/posts' component={PostList} />
+          <Route path='/post/:id' component={PostDetail} /> */}
           <Route path='/' component={Home} />
         </Switch>
       </PostContextProvider>

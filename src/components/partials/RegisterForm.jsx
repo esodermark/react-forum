@@ -2,15 +2,18 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import ApiClient from '../../api-client'
 
-import { 
+import {
     RegisterContainer, 
     RegisterFormWrapper, 
-    RegisterFormForm,
-    InputSubmit,
+    RegisterFormForm
+} from './elements/RegisterFormElements'
+
+import { 
+    InputSubmit, 
     Input, 
     Label, 
     SubmitWrapper
-} from './RegisterFormElements'
+} from '../baseElements/Input'
 
 const RegisterForm = () => {
     const [firstName, setFirstName] = useState('')
