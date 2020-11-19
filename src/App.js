@@ -21,8 +21,8 @@ function App() {
           <Route path='/register' component={Register} />
           <Route path='/login' component={Login} />
           <Route path='/posts/create' component={PostCreate} />
-          {/* <Route path='/posts' component={PostList} />
-          <Route path='/post/:id' component={PostDetail} /> */}
+          <Route path='/posts' component={PostList} />
+          {/* <Route path='/post/:id' component={PostDetail} /> */}
           <Route path='/' component={Home} />
         </Switch>
       </PostContextProvider>

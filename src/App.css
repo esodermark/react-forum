@@ -20,10 +20,11 @@
   --h1-pink: #FF7ED0;
   --h1-dark: #464545;
   --primary-p: #616161;
+  --secondary-p: #8b8b8b;
 
   --primary-button: #FBDEFF;
 
-  --border: 1px solid #adadad;
+  --border: 1px solid #aaaaaa;
 }
 
 p, label {
