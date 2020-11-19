@@ -8,7 +8,8 @@ const PostContextProvider = ({ children }) => {
 
     const getPostList = async() => {
         const postList = await ApiClient.GetPostList()
-        setPosts(postList)
+        console.log(postList.results)
+        setPosts(postList.results)
     }
 
     const addPost = async(newPost) => {
@@ -27,9 +28,14 @@ const PostContextProvider = ({ children }) => {
         setPosts(updatedPosts)
     }
 
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        if (token) { getPostList() }
+    }, [])
+
     return (
         <>
-            <PostContext.Provider value={{ getPostList, addPost, addReply }}>
+            <PostContext.Provider value={{ posts, getPostList, addPost, addReply }}>
                 {children}
             </PostContext.Provider>
         </>

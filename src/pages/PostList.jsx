@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
+import { PostContext } from '../contexts/PostContext'
+import Category from '../components/baseComponents/Category'
 
 import {
     PostListContainer,
@@ -8,71 +10,49 @@ import {
     PostListWrapper,
     PostListItem,
     Topic,
-    CategoryContainer,
-    CategoryBox,
-    Category,
     Author,
     Footer
 } from './elements/PostListElements'
 
 
 const PostList = () => {
+    const { posts } = useContext(PostContext)
+
     const history = useHistory()
 
     const handleClick = () => {
         history.push('/posts/create')
     }
-    
+
+    const redirect = (id) => {
+        history.push(`/post/${id}`)
+    }
+
     return (
-        <PostListContainer>
-            <NewPostLinkWrapper>
-                <NewPostLink onClick={handleClick} value="New post" />
-            </NewPostLinkWrapper>
-            <PostListWrapper>
-                <PostListItem>
-                    <Topic>Does anyone know?</Topic>
-                    <Footer>
-                        <CategoryContainer>
-                            <CategoryBox category="1" />
-                            <Category>Specific</Category>
-                        </CategoryContainer>
-                        <Author>primoridal_black_hole</Author>
-                    </Footer>
-                </PostListItem>
-                <PostListItem>
-                    <Topic>Biggest Realizations / Mind Blows You’ve Experienced Learning Japanese: Emoji means what?!?!</Topic>
-                    <Footer>
-                        <CategoryContainer>
-                            <CategoryBox category="1" />
-                            <Category>Specific</Category>
-                        </CategoryContainer>
-                        <Author>primoridal_black_hole</Author>
-                    </Footer>
-                </PostListItem>
-                <PostListItem>
-                    <Topic>Does anyone know the difference between
- general and nonspecific categories?</Topic>
-                    <Footer>
-                        <CategoryContainer>
-                            <CategoryBox category="1" />
-                            <Category>Specific</Category>
-                        </CategoryContainer>
-                        <Author>primoridal_black_hole</Author>
-                    </Footer>
-                </PostListItem>
-                <PostListItem>
-                    <Topic>Does anyone know the difference between
- general and nonspecific categories?</Topic>
-                    <Footer>
-                        <CategoryContainer>
-                            <CategoryBox category="1" />
-                            <Category>Specific</Category>
-                        </CategoryContainer>
-                        <Author>primoridal_black_hole</Author>
-                    </Footer>
-                </PostListItem>
-            </PostListWrapper>
-        </PostListContainer>
+        <>
+            {posts && (
+                <PostListContainer>
+                    <NewPostLinkWrapper>
+                        <NewPostLink onClick={handleClick} value="New post" />
+                    </NewPostLinkWrapper>
+                    <PostListWrapper>
+                        {posts.map((post, i) => {
+                            return (
+                                <PostListItem onClick={() => redirect(post.id)} key={i}>
+                                    <Topic>{post.title}</Topic>
+                                    <Footer>
+                                        <Category category={post.category} />
+                                        <Author>{post.author && (post.author.firstName)}</Author>
+                                    </Footer>
+                                </PostListItem>
+                            )
+                        }
+                        )}
+                    </PostListWrapper>
+                </PostListContainer>
+            )}
+        </>
+
     )
 }
 

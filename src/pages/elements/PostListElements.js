@@ -49,23 +49,6 @@ export const Footer = styled.div`
     justify-content: space-between;
 `
 
-export const CategoryContainer = styled.div`
-    display: flex;
-`
-
-export const CategoryBox = styled.div`
-    width: 1rem;
-    height: 1rem;
-    background: var(--category-specific);
-    margin-top: .2rem;
-    margin-right: .3rem;
-`
-
-export const Category = styled.p`
-    font-size: 1.4rem;
-    color: var(--secondary-p);
-`
-
 export const Author = styled.p`
     color: var(--secondary-p);
     font-size: 1.4rem;

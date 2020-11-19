@@ -25,6 +25,7 @@
   --primary-button: #FBDEFF;
 
   --border: 1px solid #aaaaaa;
+  --border-light: 1px solid #dfdfdf;
 }
 
 p, label {
