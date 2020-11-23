@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { useHistory, userHistory } from 'react-router-dom'
 import {
     Nav,
     NavbarContainer,
@@ -10,7 +11,14 @@ import {
 import { UserContext } from '../../contexts/UserContext'
 
 const Navbar = () => {
-    const { user } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
+    const history = useHistory()
+
+    const logOut = () => {
+        localStorage.removeItem('token')
+        setUser({})
+    }
+
     return (
         <>
             <Nav>
@@ -20,7 +28,7 @@ const Navbar = () => {
                         {user.firstName ? (
                             <>
                                 <NavItem>
-                                    <NavLinks to="/logout">Logout</NavLinks>
+                                    <NavLinks to='/' onClick={logOut}>Logout</NavLinks>
                                 </NavItem>
                             </>
                         ) : (

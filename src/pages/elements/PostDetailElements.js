@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Button } from '../../components/baseElements/Button'
 
 export const PostDetailContainer = styled.div`
     padding: 7rem 20rem;
@@ -25,7 +26,7 @@ export const Topic = styled.h1`
 export const PostContentContainer = styled.div`
         background: var(--light-green);
         padding: 2rem;
-        margin: 1rem 0 4rem 0;
+        margin-top: 1rem;
 `
 
 export const TopicStarterName = styled.h3`
@@ -35,6 +36,15 @@ export const TopicStarterName = styled.h3`
 
 export const PostContent = styled.p`
 
+`
+
+export const ReplyButtonWrapper = styled.div`
+    text-align: right;
+    margin-bottom: 2rem;
+`
+
+export const ReplyButton  = styled(Button)`
+    background: var(--light-gray);
 `
 
 export const RepliesContainer = styled.div`

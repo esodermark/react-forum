@@ -16,5 +16,6 @@ export const LoginFormForm = styled.form`
 `
 
 export const ErrorMessage = styled.p`
-
+    text-align: center;
+    color: var(--error-msg);
 `

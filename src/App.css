@@ -12,6 +12,9 @@
   --primary-green: #DCFFF1;
   --light-green: #F4FEFA;
   --white: #fff;
+  --light-gray: #f7f7f7;
+
+  --error-msg: #ff3d6e;
 
   --category-specific: #FF71A6;
   --category-general: #71A5FF;

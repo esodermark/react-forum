@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import {
     CategoryText,
@@ -8,7 +8,8 @@ import {
 
 const Category = ({ category }) => {
     const renderCategory = (categoryType) => {
-        switch (parseInt(categoryType)) {
+        console.log(categoryType)
+        switch (categoryType) {
             case 1:
                 return 'Specific'
             case 2:
@@ -17,6 +18,11 @@ const Category = ({ category }) => {
                 return 'Nonspecific'
         }
     }
+
+    useEffect(() => {
+        renderCategory(category)
+    }, [])
+
     return (
         <CategoryContainer>
             {category && (

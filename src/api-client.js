@@ -22,6 +22,7 @@ axiosInstance.interceptors.response.use((response) => {
 })
 
 
+
 // USER
 axiosInstance.Register = async(newUser) => {
     await axiosInstance.post('/auth/users/', newUser)
@@ -29,9 +30,14 @@ axiosInstance.Register = async(newUser) => {
 }
 
 axiosInstance.Login = async(user) => {
-    const data = await axiosInstance.post('/auth/api-token-auth/', user)
-    localStorage.setItem('token', data.token)
-    return true
+    try {
+        const data = await axiosInstance.post('/auth/api-token-auth/', user)
+        localStorage.setItem('token', data.token)
+
+        return true
+    } catch (err) {
+        return false
+    }
 }
 
 axiosInstance.GetUserInfo = async() => {
@@ -46,9 +52,13 @@ axiosInstance.CreatePost = async(newPost) => {
     return true
 }
 
-axiosInstance.CreateReplyToPostById = async(reply, id) => {
-    await axiosInstance.post(`/forum/posts/${id}/replies`, reply)
-    return true
+axiosInstance.CreateReply = async(reply) => {
+    try {
+        await axiosInstance.post(`/forum/posts/`, reply)
+        return true
+    } catch (err) {
+        return false
+    }
 }
 
 axiosInstance.GetPostList = async() => {
