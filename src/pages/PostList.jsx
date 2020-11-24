@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import { PostContext } from '../contexts/PostContext'
 import { UserContext } from '../contexts/UserContext'
@@ -21,8 +21,6 @@ const PostList = () => {
     const { user } = useContext(UserContext)
     const history = useHistory()
 
-    // const [postList, setPostList] = useState(null)
-
     const handleClick = () => {
         history.push('/posts/create')
     }
@@ -30,11 +28,6 @@ const PostList = () => {
     const redirect = (id) => {
         history.push(`/post/${id}`)
     }
-
-    // useEffect(() => {
-    //     console.log('postlist useffect', posts)
-    //     setPostList(posts)
-    // }, [posts])
 
     return (
         <>
