@@ -27,7 +27,8 @@ export const PostListWrapper = styled.div`
 
 export const PostListItem = styled.div`
     flex: 0 49%;
-    background: var(--light-green);
+    background: ${({isPinned}) => (isPinned ? 'var(--primary-pink)' : 'var(--light-green)')};
+    /* background: var(--light-green); */
     border: var(--border);
     margin-top: 1rem;
     padding: 1.5rem 1.5rem 1rem 1.5rem;

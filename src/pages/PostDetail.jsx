@@ -63,12 +63,16 @@ const PostDetail = (props) => {
                             </PostContentContainer>
                             <PostInfoBar post={post} />
                             {openReply ? (
-                                <ReplyForm postId={post.id} setOpenReply={setOpenReply} populatePostData={populatePostData}/>
+                                <ReplyForm postId={post.id} setOpenReply={setOpenReply} populatePostData={populatePostData} />
                             ) : (
-                                <ReplyButtonWrapper>
-                                    <ReplyButton onClick={() => setOpenReply(true)}>Reply</ReplyButton>
-                                </ReplyButtonWrapper>
-                            )}
+                                    post.isClosed ? (
+                                        <p>Post is archived</p>
+                                    ) : (
+                                        <ReplyButtonWrapper>
+                                            <ReplyButton onClick={() => setOpenReply(true)}>Reply</ReplyButton>
+                                        </ReplyButtonWrapper>
+                                        )
+                                )}
                         </PostContainer>
                         <RepliesContainer>
                             {post.responses && (

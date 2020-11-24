@@ -64,6 +64,9 @@ const PostInfoBar = ({ post }) => {
                 last visited <br />
                 {lastVisitedAt}
             </LastVisited>
+            {post.userSubscribed && (
+                <p>subscribed</p>
+            )}
         </BarContainer>
     )
 }

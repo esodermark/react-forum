@@ -40,7 +40,7 @@ const PostList = () => {
                         <PostListWrapper>
                             {posts.map((post, i) => {
                                 return (
-                                    <PostListItem onClick={() => redirect(post.id)} key={i}>
+                                    <PostListItem isPinned={post.isPinned} onClick={() => redirect(post.id)} key={i}>
                                         <Topic>{post.title}</Topic>
                                         <Footer>
                                             <Category category={post.category} />
