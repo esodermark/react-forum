@@ -30,3 +30,26 @@ export const InputSubmit = styled.input.attrs(props => ({
 export const Label = styled.label`
     
 `
+
+export const SelectMenu = styled.div`
+  
+`
+
+export const Select = styled.select`
+  width: 100%;
+  height: 4rem;
+  font-size: 1.4rem;
+`
+
+export const Option = styled.option`
+  font-size: 1.4rem;
+`
+
+export const BaseTextArea = styled.textarea`
+    width: 100%;
+    height: 15rem;
+    margin: 4rem 0 0 0;
+    border: var(--border);
+    font-size: 1.4rem;
+    padding: 1rem;
+  `

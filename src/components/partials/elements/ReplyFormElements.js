@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Button } from '../../baseElements/Button'
-import { InputSubmit } from '../../baseElements/Input'
+import { InputSubmit, BaseTextArea } from '../../baseElements/Input'
 
 export const ReplyFormContainer = styled.div``
 
@@ -19,17 +19,26 @@ export const ReplySubmit = styled(InputSubmit)`
     margin-top: .5rem;
 `
 
-export const TextArea = styled.textarea`
-    width: 100%;
-    height: 15rem;
-    margin: 4rem 0 0 0;
-    border: var(--border);
-    font-size: 1.4rem;
-    padding: 1rem;
+export const TextArea = styled(BaseTextArea)`
     background: var(--light-gray);
+    margin-top: 1rem;
 `
 
 export const CancelButton = styled(Button)`
     background: transparent;
     border-style: none;
+`
+
+export const TitleInput = styled.input`
+    margin: 0;
+    width: 50%;
+    height: 2rem;
+    border: var(--border);
+    padding: 1rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+`
+
+export const TitleInputContainer = styled.div`
+    margin-top: 4rem;
 `

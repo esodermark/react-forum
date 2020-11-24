@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import ApiClient from '../../api-client'
 
+import { Label } from '../baseElements/Input'
+
 import {
     ReplyFormContainer,
     ReplyFormWrapper,
@@ -8,11 +10,14 @@ import {
     ReplyButtonWrapper,
     ReplySubmit,
     TextArea,
-    CancelButton
+    CancelButton,
+    TitleInput,
+    TitleInputContainer
 } from './elements/ReplyFormElements'
 
 const ReplyForm = ({ postId, setOpenReply, populatePostData }) => {
     const [content, setContent] = useState('')
+    const [title, setTitle] = useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -24,7 +29,7 @@ const ReplyForm = ({ postId, setOpenReply, populatePostData }) => {
 
     const handlePostReply = async () => {
         const reply = {
-            title: '-',
+            title,
             content,
             parent: postId
         }
@@ -36,7 +41,11 @@ const ReplyForm = ({ postId, setOpenReply, populatePostData }) => {
         <ReplyFormContainer>
             <ReplyFormWrapper>
                 <ReplyFormForm onSubmit={handleSubmit}>
-                    <TextArea onChange={(e) => setContent(e.target.value)} placeholder="Type here."></TextArea>
+                    <TitleInputContainer>
+                        <Label>Title: </Label>
+                        <TitleInput onChange={(e)=> setTitle(e.target.value)} required></TitleInput>
+                    </TitleInputContainer>
+                    <TextArea onChange={(e) => setContent(e.target.value)} placeholder="Type here." required></TextArea>
                     <ReplyButtonWrapper>
                         <ReplySubmit value="Reply"></ReplySubmit>
                         <CancelButton onClick={() => setOpenReply(false)}>cancel</CancelButton>

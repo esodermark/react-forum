@@ -6,6 +6,7 @@ import PostInfoBar from '../components/partials/PostInfoBar'
 
 import {
     PostDetailContainer,
+    BackToPostsLink,
     PostDetailWrapper,
     PostContainer,
     Header,
@@ -17,6 +18,8 @@ import {
     ReplyButtonWrapper,
     RepliesContainer,
     ReplyItem,
+    ReplyHeader,
+    ReplyTitle,
     ReplierName,
     Content
 } from './elements/PostDetailElements'
@@ -45,11 +48,12 @@ const PostDetail = (props) => {
         <>
             {post && (
                 <PostDetailContainer>
+                    <BackToPostsLink to='/posts'>&#8592; Back to posts</BackToPostsLink>
                     <PostDetailWrapper>
                         <PostContainer>
                             <Header>
                                 <Topic>{post.title}</Topic>
-                                <Category category={post.category.id} />
+                                <Category category={post.category && post.category.id} />
                             </Header>
                             <PostContentContainer>
                                 <TopicStarterName>{post.author && (post.author.firstName)}</TopicStarterName>
@@ -71,7 +75,10 @@ const PostDetail = (props) => {
                                 post.responses.map((reply, i) => {
                                     return (
                                         <ReplyItem key={i}>
-                                            <ReplierName>{reply.author.firstName}</ReplierName>
+                                            <ReplyHeader>
+                                                <ReplierName>{reply.author.firstName}</ReplierName>
+                                                <ReplyTitle>{reply.title}</ReplyTitle>
+                                            </ReplyHeader>
                                             <Content>{reply.content}</Content>
                                         </ReplyItem>
                                     )

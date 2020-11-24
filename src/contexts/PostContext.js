@@ -16,14 +16,15 @@ const PostContextProvider = ({ children }) => {
         ApiClient.CreatePost(newPost)
         // TODO: try/catch handle error if post could not be created
         setPosts(...posts, newPost)
+        console.log(posts)
     }
 
     const addReply = async(reply, id) => {
-        ApiClient.CreateReply(reply, id)
-
         const index = posts.findIndex(post => post.id == id)
         const updatedPosts = posts
         updatedPosts[index].reply = reply
+
+        await ApiClient.CreateReply(reply, id)
 
         setPosts(updatedPosts)
     }

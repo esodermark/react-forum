@@ -1,8 +1,13 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import { Button } from '../../components/baseElements/Button'
 
 export const PostDetailContainer = styled.div`
     padding: 7rem 20rem;
+`
+
+export const BackToPostsLink = styled(Link)`
+    
 `
 
 export const PostDetailWrapper = styled.div`
@@ -35,7 +40,7 @@ export const TopicStarterName = styled.h3`
 `
 
 export const PostContent = styled.p`
-
+    
 `
 
 export const ReplyButtonWrapper = styled.div`
@@ -63,6 +68,16 @@ export const ReplyItem = styled.div`
 export const ReplierName = styled.h4`
     font-size: 1.3rem;
     margin-bottom: 1rem;
+`
+
+export const ReplyHeader = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
+
+export const ReplyTitle = styled.p`
+    font-weight: bold;
+    font-size: 1.3rem;
 `
 
 export const Content = styled.p`

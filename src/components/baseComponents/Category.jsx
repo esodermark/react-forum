@@ -8,7 +8,6 @@ import {
 
 const Category = ({ category }) => {
     const renderCategory = (categoryType) => {
-        console.log(categoryType)
         switch (categoryType) {
             case 1:
                 return 'Specific'

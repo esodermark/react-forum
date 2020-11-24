@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import { useHistory, userHistory } from 'react-router-dom'
 import {
     Nav,
     NavbarContainer,
@@ -12,7 +11,6 @@ import { UserContext } from '../../contexts/UserContext'
 
 const Navbar = () => {
     const { user, setUser } = useContext(UserContext)
-    const history = useHistory()
 
     const logOut = () => {
         localStorage.removeItem('token')
