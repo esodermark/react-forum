@@ -56,7 +56,7 @@ const PostDetail = (props) => {
                                 <Category category={post.category && post.category.id} />
                             </Header>
                             <PostContentContainer>
-                                <TopicStarterName>{post.author && (post.author.firstName)}</TopicStarterName>
+                                <TopicStarterName>{post.author && (post.author.firstName)} {post.author && (post.author.lastName)}</TopicStarterName>
                                 <PostContent>
                                     {post.content}
                                 </PostContent>
@@ -80,7 +80,7 @@ const PostDetail = (props) => {
                                     return (
                                         <ReplyItem key={i}>
                                             <ReplyHeader>
-                                                <ReplierName>{reply.author.firstName}</ReplierName>
+                                                <ReplierName>{reply.author.firstName} {reply.author.lastName}</ReplierName>
                                                 <ReplyTitle>{reply.title}</ReplyTitle>
                                             </ReplyHeader>
                                             <Content>{reply.content}</Content>
