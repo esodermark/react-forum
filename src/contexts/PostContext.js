@@ -8,25 +8,13 @@ const PostContextProvider = ({ children }) => {
 
     const getPostList = async() => {
         const postList = await ApiClient.GetPostList()
-        console.log(postList.results)
         setPosts(postList.results)
     }
 
     const addPost = async(newPost) => {
         ApiClient.CreatePost(newPost)
-        // TODO: try/catch handle error if post could not be created
-        setPosts(...posts, newPost)
-        console.log(posts)
-    }
-
-    const addReply = async(reply, id) => {
-        const index = posts.findIndex(post => post.id == id)
-        const updatedPosts = posts
-        updatedPosts[index].reply = reply
-
-        await ApiClient.CreateReply(reply, id)
-
-        setPosts(updatedPosts)
+        setPosts([newPost, ...posts])
+        getPostList()
     }
 
     useEffect(() => {
@@ -36,7 +24,7 @@ const PostContextProvider = ({ children }) => {
 
     return (
         <>
-            <PostContext.Provider value={{ posts, getPostList, addPost, addReply }}>
+            <PostContext.Provider value={{ posts, getPostList, addPost }}>
                 {children}
             </PostContext.Provider>
         </>

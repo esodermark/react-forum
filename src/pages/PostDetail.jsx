@@ -35,7 +35,6 @@ const PostDetail = (props) => {
 
     const populatePostData = async () => {
         const postData = await ApiClient.GetPostDetailsById(id)
-        console.log(postData)
         setPost(postData)
     }
 

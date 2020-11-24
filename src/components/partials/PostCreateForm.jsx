@@ -24,7 +24,7 @@ const PostCreateForm = () => {
     const [content, setContent] = useState('')
     const [category, setCategory] = useState(1)
 
-    const { addPost, getPostList } = useContext(PostContext)
+    const { addPost } = useContext(PostContext)
     const history = useHistory()
 
 
@@ -34,15 +34,14 @@ const PostCreateForm = () => {
         handleAddPost()
     }
 
-    const handleAddPost = async () => {
+    const handleAddPost = () => {
         const newPost = {
             title,
             content,
             category
         }
 
-        await addPost(newPost)
-        await getPostList()
+        addPost(newPost)
         history.push('/posts')
     }
 
