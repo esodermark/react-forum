@@ -81,7 +81,6 @@ axiosInstance.GetPostReplyListById = async(id) => {
 axiosInstance.GetCountries = async() => {
     const data = await axiosInstance.get('/countries')
     const countries = data.results
-    console.log(countries)
     return countries
 }
 

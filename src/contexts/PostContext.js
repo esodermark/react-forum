@@ -12,8 +12,8 @@ const PostContextProvider = ({ children }) => {
     }
 
     const addPost = async(newPost) => {
-        ApiClient.CreatePost(newPost)
         setPosts([newPost, ...posts])
+        await ApiClient.CreatePost(newPost)
         getPostList()
     }
 

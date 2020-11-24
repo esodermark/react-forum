@@ -21,7 +21,7 @@ const PostList = () => {
     const { user } = useContext(UserContext)
     const history = useHistory()
 
-    const [postList, setPostList] = useState(null)
+    // const [postList, setPostList] = useState(null)
 
     const handleClick = () => {
         history.push('/posts/create')
@@ -31,21 +31,21 @@ const PostList = () => {
         history.push(`/post/${id}`)
     }
 
-    useEffect(() => {
-        console.log('postlist useffect', posts)
-        setPostList(posts)
-    }, [posts])
+    // useEffect(() => {
+    //     console.log('postlist useffect', posts)
+    //     setPostList(posts)
+    // }, [posts])
 
     return (
         <>
             {user.id ? (
-                postList && (
+                posts && (
                     <PostListContainer>
                         <NewPostLinkWrapper>
                             <NewPostLink onClick={handleClick} value="New post" />
                         </NewPostLinkWrapper>
                         <PostListWrapper>
-                            {postList.map((post, i) => {
+                            {posts.map((post, i) => {
                                 return (
                                     <PostListItem isPinned={post.isPinned} onClick={() => redirect(post.id)} key={i}>
                                         <Topic>{post.title}</Topic>

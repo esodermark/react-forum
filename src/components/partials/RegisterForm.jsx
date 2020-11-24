@@ -63,7 +63,6 @@ const RegisterForm = () => {
 
     const getAndSetCountries = async () => {
         const countries = await ApiClient.GetCountries()
-        console.log('countries', countries)
         setCountries(countries)
     }
 
